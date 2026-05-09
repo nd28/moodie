@@ -1,11 +1,11 @@
 {
   "name": "moodie — Mood Tracker",
   "short_name": "moodie",
-  "description": "Track your mood 4 times daily with the Gloria Willcox feeling wheel",
+  "description": "Track your mood with a living garden",
   "start_url": "/moodie/",
   "display": "standalone",
-  "background_color": "#0a0a0c",
-  "theme_color": "#141418",
+  "background_color": "#0c0a0f",
+  "theme_color": "#0c0a0f",
   "orientation": "portrait",
   "scope": "/moodie/",
   "icons": [
@@ -22,6 +22,6 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["health", "medical", "lifestyle"],
+  "categories": ["health", "lifestyle"],
   "lang": "en"
 }
