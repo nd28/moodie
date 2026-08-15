@@ -1,4 +1,4 @@
-const CACHE_NAME = 'moodie-v1';
+const CACHE_NAME = 'moodie-v2';
 const SHELL_URLS = [
   '/moodie/',
   '/moodie/index.html',
