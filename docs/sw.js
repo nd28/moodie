@@ -1,4 +1,4 @@
-const CACHE_NAME = 'moodie-v2';
+const CACHE_NAME = 'moodie-v3';
 const SHELL_URLS = [
   '/moodie/',
   '/moodie/index.html',
@@ -30,20 +30,28 @@ self.addEventListener('fetch', (event) => {
     return;
   }
   event.respondWith(
-    caches.match(event.request).then(cached => {
-      if (cached) {
-        fetch(event.request).then(r => {
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, r));
-        }).catch(() => {});
-        return cached;
-      }
-      return fetch(event.request).then(r => {
-        if (r.ok) {
-          const clone = r.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+    (async () => {
+      if (event.request.mode === 'navigate') {
+        try {
+          const fresh = await fetch(event.request);
+          if (fresh.ok) {
+            const cache = await caches.open(CACHE_NAME);
+            cache.put(event.request, fresh.clone());
+            return fresh;
+          }
+          return (await caches.match(event.request)) || fresh;
+        } catch (err) {
+          return (await caches.match(event.request)) || new Response('Offline', { status: 503 });
         }
-        return r;
-      });
-    }).catch(() => new Response('Offline', { status: 503 }))
+      }
+      const cached = await caches.match(event.request);
+      if (cached) return cached;
+      const res = await fetch(event.request);
+      if (res.ok) {
+        const cache = await caches.open(CACHE_NAME);
+        cache.put(event.request, res.clone());
+      }
+      return res;
+    })()
   );
 });
