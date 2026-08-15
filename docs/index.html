@@ -1061,9 +1061,9 @@ function renderSettings(){
   const container=document.getElementById('settingsContent');
   let html='<div class="section">';
   html+='<div class="settings-blob"><div class="settings-blob-title">Appearance</div><div class="theme-options">';
-  html+='<button class="theme-option" id="themeSystem2" onclick="setTheme('system')"><span class="theme-option-icon">◐</span>System</button>';
-  html+='<button class="theme-option" id="themeLight2" onclick="setTheme('light')"><span class="theme-option-icon">☀</span>Light</button>';
-  html+='<button class="theme-option" id="themeDark2" onclick="setTheme('dark')"><span class="theme-option-icon">🌙</span>Dark</button>';
+  html+="<button class=\"theme-option\" id=\"themeSystem2\" onclick=\"setTheme('system')\"><span class=\"theme-option-icon\">◐</span>System</button>";
+  html+="<button class=\"theme-option\" id=\"themeLight2\" onclick=\"setTheme('light')\"><span class=\"theme-option-icon\">☀</span>Light</button>";
+  html+="<button class=\"theme-option\" id=\"themeDark2\" onclick=\"setTheme('dark')\"><span class=\"theme-option-icon\">🌙</span>Dark</button>";
   html+='</div></div>';
   html+='<div class="settings-blob"><div class="settings-blob-title">Reminders</div>';
   html+='<button class="settings-row" onclick="toggleReminders()"><div class="settings-row-info"><div class="settings-row-label">Enable Reminders</div><div class="settings-row-desc">9 AM, 2 PM, 6 PM, 9 PM</div></div><div class="settings-row-action">🔔</div></button>';
